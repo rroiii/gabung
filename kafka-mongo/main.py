@@ -56,13 +56,13 @@ async def lifespan(app: FastAPI):
                     }
                     
                     if topic == "log-cpu-usage":
-                        cpu_usage_log_collection.insert_one(msg_data)
+                        cpu_usage_log_collection.insert_one(value)
                     elif topic == "log-file-operation":
-                        file_log_collection.insert_one(msg_data)
+                        file_log_collection.insert_one(value)
                     elif topic == "log-process":
-                        process_log_collection.insert_one(msg_data)
+                        process_log_collection.insert_one(value)
                     elif topic == "log-network":
-                        network_log_collection.insert_one(msg_data)
+                        network_log_collection.insert_one(value)
                         
                 except Exception as e:
                     logging.error(f"Error processing message: {e}")
