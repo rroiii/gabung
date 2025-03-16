@@ -7,6 +7,7 @@ import logging
 from contextlib import asynccontextmanager
 import uvicorn
 from pymongo.server_api import ServerApi
+import time
 
 uri = ""
 db_client = MongoClient(uri, server_api=ServerApi('1'))
@@ -31,7 +32,7 @@ async def lifespan(app: FastAPI):
             consumer = AIOKafkaConsumer(
                 *KAFKA_TOPICS,
                 bootstrap_servers=KAFKA_SERVER,
-                group_id="log_consumer_group",
+                group_id=f"log_consumer_group_{int(time.time())}", 
                 auto_offset_reset='latest'
             )
             await consumer.start()

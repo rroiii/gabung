@@ -12,16 +12,16 @@ services:
     networks:
       - app-network
 
-  poc-attack-server:
-    build:
-      context: ./poc-attack-server
-      dockerfile: Dockerfile
-    ports:
-      - "8001:8001"
-    volumes:
-      - ./poc-attack-server:/app 
-    networks:
-      - app-network
+  # poc-attack-server:
+  #   build:
+  #     context: ./poc-attack-server
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "8001:8001"
+  #   volumes:
+  #     - ./poc-attack-server:/app 
+  #   networks:
+  #     - app-network
 
 networks:
   app-network:
